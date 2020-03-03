@@ -32,6 +32,14 @@ namespace FileSearch
                 
                 anyViaAhoCorasick(string.Join(",", File.ReadLines(f)).Split(","), "max_line_length = 120");
             }
+            Console.WriteLine("anyViaContains() took " + sw.Elapsed);
+
+            sw.Restart();
+            foreach (var f in files)
+            {
+                var a = File.ReadLines(f).Where(x => x.Contains("max_line_length = 120"));
+                Console.WriteLine(string.Join(",", a));
+            }
             Console.WriteLine("anyViaAhoCorasick() took " + sw.Elapsed);
         }
 
